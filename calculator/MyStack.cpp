@@ -4,17 +4,25 @@
 MyStack::MyStack() : head(nullptr) {}
 
 MyStack::~MyStack() {
-    while (!isEmpty()) {
+    clear();
+}
+
+void MyStack::clear() {
+    while (!is_empty()) {
         pop();
     }
 }
 
-void MyStack::push(double value) {
-    head = new Node(value, head);
+bool MyStack::is_empty() const {
+    return head == nullptr;
+}
+
+void MyStack::push(double item) {
+    head = new Node(item, head);
 }
 
 double MyStack::pop() {
-    if (isEmpty()) throw std::runtime_error("Stack underflow.");
+    if (is_empty()) throw std::underflow_error("Stack underflow.");
     Node* oldHead = head;
     double value = head->data;
     head = head->next;
@@ -23,10 +31,6 @@ double MyStack::pop() {
 }
 
 double MyStack::top() const {
-    if (isEmpty()) throw std::runtime_error("Stack underflow.");
+    if (is_empty()) throw std::underflow_error("Stack underflow.");
     return head->data;
-}
-
-bool MyStack::isEmpty() const {
-    return head == nullptr;
 }
