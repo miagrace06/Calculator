@@ -26,7 +26,7 @@ int main() {
             double value;
             if (isOperator(token)) {
                 if (token == "~") {
-                    if (stack.isEmpty()) {
+                    if (stack.is_empty()) {
                         std::cout << "Not enough operands." << std::endl;
                         error = true;
                         break;
@@ -34,13 +34,13 @@ int main() {
                     double a = stack.pop();
                     stack.push(-a);
                 } else {
-                    if (stack.isEmpty()) {
+                    if (stack.is_empty()) {
                         std::cout << "Not enough operands." << std::endl;
                         error = true;
                         break;
                     }
                     double b = stack.pop();
-                    if (stack.isEmpty()) {
+                    if (stack.is_empty()) {
                         std::cout << "Not enough operands." << std::endl;
                         error = true;
                         break;
@@ -69,11 +69,11 @@ int main() {
 
         if (error) continue;
 
-        if (stack.isEmpty()) {
+        if (stack.is_empty()) {
             std::cout << "No expression." << std::endl;
         } else {
             double result = stack.pop();
-            if (!stack.isEmpty()) {
+            if (!stack.is_empty()) {
                 std::cout << "Too many operands." << std::endl;
             } else {
                 std::cout << "= " << result << std::endl;
