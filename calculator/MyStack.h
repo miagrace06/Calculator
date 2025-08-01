@@ -16,10 +16,12 @@ private:
 public:
     MyStack();
     ~MyStack();
-    void push(double value) override;
+
+    void clear() override;
+    bool is_empty() const override;
+    void push(double item) override;
     double pop() override;
     double top() const override;
-    bool isEmpty() const override;
 };
 
 #endif
